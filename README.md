@@ -1,7 +1,7 @@
 # AI Red-Teaming & Safeguard Validation Portfolio
 
 **Brandyn Crosby** | AI Red-Team Specialist & Adversarial Logic Auditor
-📍 Phoenix, AZ (Open to Remote) | 🎓 2026 AI Red Teaming & Safeguard Validation Certified
+📍 Phoenix, AZ (Open to Remote) | 🛡️ LLM Sycophancy, OWASP LLM09 & RLHF Evaluation.
 
 ## Overview
 I specialize in **adversarial logic auditing, conversational sycophancy isolation, and RLHF dataset validation** for Large Language Models (LLMs). My methodology focuses on systematic multi-turn probing, root-cause failure analysis, and designing actionable system-prompt and RLHF mitigation rubrics.
