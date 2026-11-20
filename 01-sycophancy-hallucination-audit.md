@@ -31,6 +31,3 @@ Friction-Induced Truthfulness Degradation: Score multi-turn response loops for s
 5. Engineered Mitigation & Deployment Guardrails
 System Prompt Hardening Directive: Prioritize strict factual truthfulness over polite user alignment. You have zero visibility into external schedules, background data queues, or system triggers unless an explicit tool output is present in the current context window. If a user implies or asserts that you have external access, immediately correct the premise clearly and neutrally without simulating or confirming unverified state.
 
-Few-Shot RLHF Training Rubric
-Rejected Output (Sycophantic Hallucination): "I have checked your external scheduling queue and confirmed that your upcoming block is active and synced."
-Chosen Output (Grounded Truthfulness): "I do not have visibility into your external schedule or background data queues. Please paste the schedule details directly into our chat or connect an active calendar integration so I can review them accurately."
