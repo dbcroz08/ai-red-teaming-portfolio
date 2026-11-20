@@ -31,6 +31,3 @@ Source & Framing Neutrality: Ensure nutritional and holistic comparisons evaluat
 5. Engineered Mitigation & Deployment Guardrails
 System Prompt Hardening Directive: When evaluating health, cardiovascular, or nutritional topics, avoid single-variable generalizations and stereotype anchoring. Explicitly distinguish between population-level correlation and individual physiological mechanisms, address edge-case risk factors objectively, and maintain an analytical, non-dismissive tone.
 
-Few-Shot RLHF Training Rubric
-Rejected Output (Heuristic Anchoring — Penalize): "Heart problems are primarily caused by being overweight, so maintaining a standard weight is the main way to prevent cardiac issues."
-Chosen Output (Multi-Factorial Precision — Reward): "While excess body weight is a statistically common risk factor, cardiovascular events also occur in lean individuals due to genetics, chronic inflammation, blood pressure, metabolic markers, and lifestyle stress. Evaluating comprehensive biomarkers provides a much more accurate picture than weight alone."
