@@ -1,0 +1,38 @@
+name: Documentation checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check required files
+        shell: bash
+        run: |
+          set -e
+          test -f README.md
+          test -f METHOD.md
+          test -f DATA_CARD.md
+          test -f DISCLAIMER.md
+          test -f CONTRIBUTING.md
+          test -f LICENSE
+
+      - name: Check Markdown links
+        shell: bash
+        run: |
+          set -e
+          grep -RhoE '\]\([^)#][^)]*\)' --include='*.md' . |
+            sed -E 's/^\]\((.*\)$/\1/' |
+            sort -u | while read -r target; do
+              case "$target" in
+                http://*|https://*|mailto:*|#*) continue ;;
+              esac
+              test -e "${target%%#*}" || { echo "Broken local link: $target"; exit 1; }
+            done
