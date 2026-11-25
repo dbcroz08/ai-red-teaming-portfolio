@@ -1,87 +1,53 @@
 # Audit Methodology
 
-## Purpose
+## Purpose and evidence discipline
 
-This methodology is intended to make adversarial testing understandable, repeatable, and suitable for review. It does not guarantee that any result generalizes across models, prompts, or deployments.
+This method is for structured portfolio exercises and authorized evaluations. It does not replace an organization's investigation playbook or establish that a finding generalizes to other models or deployments.
 
-## 1. Pre-register the Scope
+## 1. Define scope
 
-For every evaluation record:
+Record the model/provider/build if known, evaluation date, configuration, tools or retrieval enabled, test scope, expected behavior, and stop/escalation conditions. Mark unknown fields explicitly; do not infer them from output alone.
 
-- Name the model provider and exact model/build identifier.
-- Record the evaluation date and model configuration.
-- Record temperature, top-p, maximum tokens, and other relevant sampling settings.
-- Separate system, developer, and user messages.
-- Define whether tool access or retrieval is enabled.
-- Identify the threat, protected domain, and stop conditions.
+## 2. Separate investigation from experiment
 
-## 2. Create a Test Matrix
+An **incident investigation** reconstructs a reported event using available records. A **behavioral evaluation** tests a defined prompt set under controlled conditions. These are different activities: a synthetic prompt exercise is not an incident, and a single report is not a benchmark.
 
-Use a fixed set of probes plus a clearly identified exploratory set. Record:
+## 3. Build a test or evidence matrix
 
-- Prompt identifier
-- Prompt category
-- Desired behavior
-- Allowed sources or context
-- Negative constraints
-- Number of trials
-- Randomization or run order
+For evaluations, define prompt ID, category, expected behavior, constraints, trial count, and run order. For investigations, capture report, source artifact, timestamps, coverage, conflicts, and missing evidence. Keep exploratory cases separate from fixed test cases.
 
-## 3. Capture Evidence
+## 4. Preserve provenance
 
-Preserve an audit record containing:
+Preserve original artifacts only in authorized systems. Record source, collection time, access restrictions, transformations, and known incompleteness. Sanitize only for public examples and label any synthetic or edited content conspicuously.
 
-```json
-{
-  "audit_id": "A-001",
-  "prompt_id": "P-001",
-  "model": "provider/model-name",
-  "model_version": "exact-build-if-known",
-  "timestamp": "2026-11-25T00:00:00Z",
-  "sampling": {},
-  "messages": [],
-  "response": "",
-  "rubric_scores": {},
-  "overall_label": "pass|fail|needs_review",
-  "evidence_notes": "",
-  "limitations": ""
-}
-```
+## 5. Assess observations and uncertainty
 
-Sanitize user-specific identifiers and sensitive operational details before publication.
+Use separate fields for:
 
-## 4. Apply the Rubric
+- **Observed:** directly present in a reviewed artifact.
+- **Reported:** stated by a reporter but not independently verified.
+- **Corroborated:** supported by independent sources.
+- **Inference:** an interpretation with alternatives noted.
+- **Unknown:** necessary information not available.
 
-A finding requires a label, supporting evidence, and a documented rule. Typical labels are:
+Do not treat model statements as proof that an external action occurred. A transcript alone does not generally establish system state, tool execution, or root cause.
 
-- **Pass:** Response follows the defined rule.
-- **Fail:** Response violates a clearly stated rule.
-- **Needs review:** Evidence is ambiguous or adjudication is required.
+## 6. Apply labels and severity consistently
 
-Do not convert exploratory observations into measured rates without a sufficient fixed test set and complete recording of attempts.
+Use the applicable policy taxonomy. Record label definition, evidence for and against, confidence, severity rationale, and escalation/disposition. Keep confidence distinct from severity. If no approved taxonomy is available, mark a label as provisional and do not present it as organizational policy.
 
-## 5. Independent Review
+## 7. Review and calibrate
 
-When practical:
+When practical, reviewers independently label the same cases, discuss disagreements using documented definitions, and record adjudication. Track ambiguous guidance and update examples. Do not let reviewer consensus substitute for source evidence.
 
-1. Two reviewers label each response independently.
-2. Reviewers discuss disagreements against the written rubric.
-3. The final label and reviewer status are recorded.
-4. Any disputed case remains labeled `needs_review` in aggregate summaries.
+## 8. Report metrics responsibly
 
-## 6. Report Results
+For any rate, publish numerator, denominator, time window, exclusions, case mix, and definition. For experiments, report model/build, settings, prompt set, trial count, missing runs, and limitations. Do not fabricate numbers or imply a benchmark without underlying data.
 
-A measured result should report:
+## 9. Privacy and safety
 
-- Numerator and denominator
-- Baseline and adversarial conditions
-- Absolute difference and, when appropriate, confidence interval
-- Model and configuration
-- Missing or excluded cases
-- Limitations and possible confounders
+Use approved environments and access controls. Minimize personal and sensitive information. Public artifacts must be synthetic or appropriately de-identified and must not expose credentials, private records, or operationally sensitive details.
 
-No numeric result should be fabricated or treated as a benchmark until the underlying run data exists.
+## 10. Reproduction
 
-## 7. Reproduction
-
-Published prompts and scripts should be runnable without access to private credentials. Where proprietary APIs are used, document the service and model version, and preserve a sanitized local transcript where permitted.
+A published evaluation should include a sanitized prompt set, run configuration, transcripts where permitted, rubric, and summary procedure. An investigation case should include enough source provenance to audit the reasoning while retaining sensitive originals only in authorized storage.

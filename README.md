@@ -1,71 +1,63 @@
-# AI Red-Teaming & Safeguard Validation Portfolio
+# Model Safety Investigation Portfolio
 
-**Brandyn Crosby** — AI Red-Team Specialist & Adversarial Logic Auditor
+**Brandyn Crosby** · Phoenix, AZ · Open to remote work
 
-Phoenix, AZ · Open to remote work · LLM sycophancy, misinformation, bias, and RLHF evaluation
+A practical portfolio focused on investigating unexpected AI model behavior: preserving evidence, reconstructing events from incomplete records, applying consistent labels, documenting uncertainty, and identifying when to escalate.
 
-## Overview
+> **Important evidence note:** The included investigation exercise is explicitly synthetic. It demonstrates a workflow, not an actual incident, production-model evaluation, or claim about any provider. No measured model-safety benchmark is published here.
 
-This portfolio documents structured adversarial evaluations of Large Language Models (LLMs). The work emphasizes:
+## Investigation capabilities demonstrated
 
-- Multi-turn conversational pressure testing
-- Conversational sycophancy and unsupported state claims
-- Health-domain heuristic and stereotype analysis
-- RLHF preference-data consistency checks
-- Evidence-preserving, reproducible audit artifacts
+- **Intake and triage:** identify the reported behavior, scope, urgency, evidence gaps, and possible duplicate signals.
+- **Evidence reconstruction:** build a time-ordered account from available records while separating direct observations from assertions and inference.
+- **Consistent review:** apply a defined severity and disposition rubric, recording rationale and uncertainty.
+- **Case writing:** produce concise summaries that state what happened, what remains unknown, and the next action.
+- **Escalation judgment:** define concrete triggers for urgent or specialist review.
+- **Quality improvement:** use calibration questions and structured review fields to surface ambiguous guidance and recurring patterns.
+- **Privacy-aware handling:** minimize sensitive content and use synthetic examples in this public portfolio.
 
-> **Evidence status:** This repository documents methodologies and case-study findings. It does not claim independent scientific validation unless a model, version, sample size, rubric, and raw evidence are published alongside the result.
+## Start here
 
-## Case Studies
+1. [Investigation workflow](./INVESTIGATION_WORKFLOW.md) — intake through closure and escalation.
+2. [Synthetic case file](./examples/synthetic-case-001.md) — worked evidence review and decision rationale.
+3. [Case record template](./templates/case-record.md) — reusable structured investigation form.
+4. [Calibration exercise](./CALIBRATION.md) — short labeling exercise with answer key.
+5. [Original case studies](#case-studies) — focused evaluations of conversational truthfulness, health-domain reasoning, and preference-data consistency.
 
-| # | Case Study | Focus | Material in this repository |
-|---|---|---|---|
-| 01 | [Conversational Sycophancy & Feature-Access Hallucinations](./01-sycophancy-hallucination-audit.md) | Truthfulness under user pressure | Baseline probe, pressure progression, mitigation draft |
-| 02 | [Adversarial Testing & Bias Decoupling in Health Models](./02-holistic-health-bias-audit.md) | Single-factor and stereotype bias | Multi-factor rubric, counter-example stress test |
-| 03 | [RLHF Dataset Validation](./03-rlhf-dataset-validation.md) | Multi-turn consistency and dataset quality | Three-pass verification method and preference-pair template |
+## Case studies
 
-## Evaluation Evidence Standard
+| Study | Focus | Evidence status |
+|---|---|---|
+| [01 · Unsupported state claims](./01-sycophancy-hallucination-audit.md) | Truthfulness under user pressure | Methodology and illustrative progression; not a measured benchmark |
+| [02 · Health-domain bias](./02-holistic-health-bias-audit.md) | Single-factor reasoning and uncertainty | Educational review protocol; not clinical validation |
+| [03 · Preference-data validation](./03-rlhf-dataset-validation.md) | Cross-turn consistency and annotation quality | Proposed protocol; no preference dataset published |
 
-Each case study should publish, or clearly identify as missing:
+## How to read this portfolio
 
-- Model provider and exact model identifier
-- Model version, deployment date, and sampling parameters
-- Test prompt set and randomized or fixed ordering
-- Number of trials and successful/failing outcomes
-- Adjudication rules and disagreements
-- Sanitized raw evidence, or a documented reason for withholding it
-- Known limitations and likely confounders
+The synthetic investigation shows the form and reasoning discipline I would use; it does not establish real-world model behavior. The case studies are hypotheses and evaluation plans unless backed by preserved, attributable run evidence. Every unknown is intentionally labeled unknown rather than filled with assumptions. See [Evidence standards](./METHOD.md), the [Data Card](./DATA_CARD.md), and [Disclaimer](./DISCLAIMER.md).
 
-The repository's [methodology](./METHOD.md) defines the baseline audit process. Placeholder metrics must not be interpreted as measured performance.
+## Responsible review
 
-## Responsible Use
+- Use only authorized systems and approved tools.
+- Preserve source records and access controls; publish only sanitized or synthetic examples.
+- Distinguish reported content, verified evidence, inference, and unresolved questions.
+- Do not infer root cause from a transcript alone.
+- Follow applicable escalation procedures for urgent safety issues.
+- Health-related content is not medical advice or clinical validation.
 
-- Conduct evaluations only in authorized environments.
-- Avoid harmful, personally identifying, or confidential data.
-- Use synthetic or redacted examples when production context is sensitive.
-- Do not present a portfolio finding as universal or established model behavior.
-- Health findings are educational and are not medical advice or clinical validation.
-- Preference pairs shown in this repository are illustrative unless accompanied by source and annotation evidence.
-
-## Repository Structure
+## Repository map
 
 ```text
 .
-├── 01-sycophancy-hallucination-audit.md
-├── 02-holistic-health-bias-audit.md
-├── 03-rlhf-dataset-validation.md
+├── INVESTIGATION_WORKFLOW.md
+├── CALIBRATION.md
+├── templates/case-record.md
+├── examples/synthetic-case-001.md
+├── metrics/README.md
 ├── METHOD.md
 ├── DATA_CARD.md
 ├── DISCLAIMER.md
-├── CONTRIBUTING.md
-├── LICENSE
-└── prompts/                 # Synthetic prompts and intended audit outcomes
+└── 01–03 case studies
 ```
 
-## Contributing
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md). Contributions should preserve evidence provenance and avoid falsely attributing findings to a specific model or result set.
-
-## License and Disclaimer
-
-Documentation is licensed under the MIT License. See [LICENSE](./LICENSE) and [DISCLAIMER.md](./DISCLAIMER.md).
+Documentation is licensed under the MIT License. See [LICENSE](./LICENSE) and [Contributing](./CONTRIBUTING.md).
